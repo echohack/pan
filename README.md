@@ -65,7 +65,7 @@ Things you might not be familiar with that this generator creates:
   * It's probably stronger to provision with chef_zero than chef_solo since it behaves more like the server does. (That is to say, if you use chef server, then test with chef zero. If you're using solo, then test with solo.)
 
 2. Windows 2012 R2 with WinRM transport
-  * Ideally this is how you would set up the transport for WinRM with Kitchen, if you're using [Salim Fadely's patch for Test Kitchen](https://github.com/afiune/test-kitchen).
+  * Ideally this is how you would set up the transport for WinRM with Kitchen, if you're using [Salim Afiune's patch for Test Kitchen](https://github.com/afiune/test-kitchen).
 
 ### In cookbook.rb
 
