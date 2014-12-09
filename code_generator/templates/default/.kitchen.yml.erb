@@ -1,0 +1,25 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-14.04
+
+  - name: windows-2012r2
+    transport:
+      name: winrm
+      port: 5985
+      username: vagrant
+      password: vagrant
+    driver_config:
+      box: windows2012r2
+      box_url: http://my.storage.example.com/path/to/windows2012r2.box
+
+suites:
+  - name: default
+    run_list:
+      - recipe[<%= cookbook_name %>::default]
+    attributes:
