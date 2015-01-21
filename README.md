@@ -5,14 +5,24 @@ pan is an example cookbook generator
 ## Supported Platforms
 
 ### Tested And Validated On
-* Mac OSX 10.10 with ChefDK 3.5
-* Windows 7 with ChefDK 3.5
+* Mac OSX 10.10 with ChefDK 0.3.6
+* Windows 7 with ChefDK 0.3.6
 
 ## Usage
 
 While in the directory you wish to create your cookbook:
 
 `chef generate cookbook my_cookbook_name -g ~/path/to/pan`
+
+or you want to be super fancy, add pan to your knife.rb or config.rb for usage without the -g argument.
+
+chefdk.generator_cookbook = '~/chef/pan'
+
+```
+chef generate cookbook my_cookbook_1
+Compiling Cookbooks...
+Recipe: pan::cookbook
+```
 
 ## Examples
 
@@ -26,13 +36,6 @@ While in the directory you wish to create your cookbook:
 
 (Windows): `chef generate cookbook C:\mycookbook -g %USERPROFILE%\pan`
 
-
-## FAQ
-
-1. Why is there a top level folder called `code_generator`?
-
-  A: The chef command line tool expects a folder with this name in order to work correctly.
-
 ## New Constructs
 
 Things you might not be familiar with that this generator creates:
@@ -43,11 +46,7 @@ Things you might not be familiar with that this generator creates:
 
   * A hack to force Chef Manage to display the contents of the README.md. (Perhaps this will be fixed in Chef 12?)
 
-2. privacy true
-
-  * A new setting in metadata to ensure that cookbooks cannot be accidentally uploaded to the public Supermarket. (Great if you have an internal supermarket). Warning: Seems to cause failures with chef_solo at the moment.
-
-3. Text isn't aligned
+2. Text isn't aligned
 
   * This blows up rubocop, and I'd rather have it more standardized. Just say no to vertical whitespace. ;)
 
