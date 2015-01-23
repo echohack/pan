@@ -14,14 +14,66 @@ While in the directory you wish to create your cookbook:
 
 `chef generate cookbook my_cookbook_name -g ~/path/to/pan`
 
-or you want to be super fancy, add pan to your knife.rb or config.rb for usage without the -g argument.
+or you want to be super fancy, add pan to your knife.rb(*1) or config.rb for usage without the -g argument.
 
-chefdk.generator_cookbook = '~/chef/pan'
+`chefdk.generator_cookbook = '~/chef/pan'`
 
 ```
 chef generate cookbook my_cookbook_1
 Compiling Cookbooks...
 Recipe: pan::cookbook
+...
+```
+
+### *1 - Bug In Knife with Automagic Custom Generator
+
+Knife doesn't play nicely with the knife.rb configuration...
+
+~/.chef/knife.rb
+```
+chef_server_url 'https://chef.example.com/organizations/example'
+cache_type 'BasicFile'
+cache_options(path: "#{ENV['HOME']}/.chef/checksums")
+chefdk.generator_cookbook = '~/chef/pan'
+```
+
+```
+MyComputerName:Desktop echohack$ chef generate cookbook my_cookbook_2
+Compiling Cookbooks...
+Recipe: pan::cookbook
+* directory[/Users/echohack/Desktop/my_cookbook_2/attributes] action create
+- create new directory /Users/echohack/Desktop/my_cookbook_2/attributes
+* directory[/Users/echohack/Desktop/my_cookbook_2/recipes] action create
+- create new directory /Users/echohack/Desktop/my_cookbook_2/recipes
+...
+```
+
+```
+MyComputerName:Desktop echohack$ knife environment list
+ERROR: You have an error in your config file /Users/echohack/.chef/knife.rb
+NoMethodError: undefined method `generator_cookbook=' for nil:NilClass
+/Users/echohack/.chef/knife.rb:13:in `from_string'
+
+# /Users/echohack/.chef/knife.rb
+13: chefdk.generator_cookbook = '~/chef/pan'
+```
+
+Moving this to config.rb seems to fix it:
+
+~/.chef/config.rb
+```
+chefdk.generator_cookbook = '~/chef/pan'
+```
+
+```
+MyComputerName:Desktop echohack$ chef generate cookbook my_cookbook_3
+Compiling Cookbooks...
+Recipe: pan::cookbook
+...
+
+MyComputerName:Desktop echohack$ knife environment list
+_default
+my-env
 ```
 
 ## Examples
