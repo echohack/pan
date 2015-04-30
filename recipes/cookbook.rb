@@ -58,3 +58,18 @@ template "#{cookbook_dir}/recipes/default.rb" do
   helpers(ChefDK::Generator::TemplateHelper)
   action :create_if_missing
 end
+
+# git
+if context.have_git
+  unless context.skip_git_init
+
+    execute('initialize-git') do
+      command('git init .')
+      cwd cookbook_dir
+    end
+  end
+
+  cookbook_file "#{cookbook_dir}/.gitignore" do
+    source 'gitignore'
+  end
+end
