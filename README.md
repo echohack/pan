@@ -17,27 +17,93 @@ While in the directory you wish to create your cookbook:
 or you want to be super fancy, add pan to your knife.rb for usage without the -g argument:
 
 knife.rb stub:
-`config[:generator_cookbook] = '~/chef/pan'`
+
+`chefdk.generator_cookbook '~/chef/pan'`
+
+Then when you're ready to generate your cookbook:
+
+```chef generate cookbook my_cookbook3```
 
 ```
-chef generate cookbook my_cookbook_1
+Davids-MacBook-Pro:desktop echohack$ chef generate cookbook my_cookbook3
 Compiling Cookbooks...
 Recipe: pan::cookbook
-...
+  * directory[/Users/echohack/Desktop/my_cookbook3/attributes] action create
+    - create new directory /Users/echohack/Desktop/my_cookbook3/attributes
+  * directory[/Users/echohack/Desktop/my_cookbook3/recipes] action create
+    - create new directory /Users/echohack/Desktop/my_cookbook3/recipes
+  * directory[/Users/echohack/Desktop/my_cookbook3/templates/default] action create
+    - create new directory /Users/echohack/Desktop/my_cookbook3/templates/default
+  * directory[/Users/echohack/Desktop/my_cookbook3/files/default] action create
+    - create new directory /Users/echohack/Desktop/my_cookbook3/files/default
+  * directory[/Users/echohack/Desktop/my_cookbook3/test/integration/default] action create
+    - create new directory /Users/echohack/Desktop/my_cookbook3/test/integration/default
+  * cookbook_file[/Users/echohack/Desktop/my_cookbook3/.rubocop.yml] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook3/.rubocop.yml
+    - update content in file /Users/echohack/Desktop/my_cookbook3/.rubocop.yml from none to fb555e
+    (diff output suppressed by config)
+  * cookbook_file[/Users/echohack/Desktop/my_cookbook3/Berksfile] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook3/Berksfile
+    - update content in file /Users/echohack/Desktop/my_cookbook3/Berksfile from none to 5ec92e
+    (diff output suppressed by config)
+  * cookbook_file[/Users/echohack/Desktop/my_cookbook3/chefignore] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook3/chefignore
+    - update content in file /Users/echohack/Desktop/my_cookbook3/chefignore from none to 9727b1
+    (diff output suppressed by config)
+  * cookbook_file[/Users/echohack/Desktop/my_cookbook3/Gemfile] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook3/Gemfile
+    - update content in file /Users/echohack/Desktop/my_cookbook3/Gemfile from none to a3b439
+    (diff output suppressed by config)
+  * cookbook_file[/Users/echohack/Desktop/my_cookbook3/LICENSE] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook3/LICENSE
+    - update content in file /Users/echohack/Desktop/my_cookbook3/LICENSE from none to 693e85
+    (diff output suppressed by config)
+  * cookbook_file[/Users/echohack/Desktop/my_cookbook3/Thorfile] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook3/Thorfile
+    - update content in file /Users/echohack/Desktop/my_cookbook3/Thorfile from none to bab8d2
+    (diff output suppressed by config)
+  * template[/Users/echohack/Desktop/my_cookbook3/metadata.rb] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook3/metadata.rb
+    - update content in file /Users/echohack/Desktop/my_cookbook3/metadata.rb from none to 95b0c0
+    (diff output suppressed by config)
+  * template[/Users/echohack/Desktop/my_cookbook3/README.md] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook3/README.md
+    - update content in file /Users/echohack/Desktop/my_cookbook3/README.md from none to 5b81bf
+    (diff output suppressed by config)
+  * template[/Users/echohack/Desktop/my_cookbook3/CHANGELOG.md] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook3/CHANGELOG.md
+    - update content in file /Users/echohack/Desktop/my_cookbook3/CHANGELOG.md from none to 0404f5
+    (diff output suppressed by config)
+  * template[/Users/echohack/Desktop/my_cookbook3/.kitchen.yml] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook3/.kitchen.yml
+    - update content in file /Users/echohack/Desktop/my_cookbook3/.kitchen.yml from none to 1338ed
+    (diff output suppressed by config)
+  * template[/Users/echohack/Desktop/my_cookbook3/attributes/default.rb] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook3/attributes/default.rb
+    - update content in file /Users/echohack/Desktop/my_cookbook3/attributes/default.rb from none to cdc111
+    (diff output suppressed by config)
+  * template[/Users/echohack/Desktop/my_cookbook3/recipes/default.rb] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook3/recipes/default.rb
+    - update content in file /Users/echohack/Desktop/my_cookbook3/recipes/default.rb from none to e3b0c4
+    (diff output suppressed by config)
 ```
 ## Examples
 
-* create a cookbook named my_cookbook_name in the same subdirectory where pan resides.
+* Create a cookbook named my_cookbook_name in the same subdirectory where pan resides, explicitly specifying the custom generator cookbook.
 
 (Mac & Windows): `chef generate cookbook my_cookbook_name -g ./pan`
 
-* create a cookbook named my_cookbook_name in the root of your primary drive with pan residing in your home directory
+* Create a cookbook named my_cookbook_name in the same subdirectory where pan resides, with the custom generator cookbook specified in your knife.rb.
+
+(Mac & Windows): `chef generate cookbook my_cookbook_name
+
+* Create a cookbook named my_cookbook_name in the root of your primary drive with pan residing in your home directory
 
 (Mac): `chef generate cookbook /mycookbook -g ~/pan`
 
 (Windows): `chef generate cookbook C:\mycookbook -g %USERPROFILE%\pan`
 
-## New Constructs
+## Stuff This Custom Generator Does
 
 Things you might not be familiar with that this generator creates:
 

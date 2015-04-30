@@ -1,5 +1,9 @@
 # Pan Example Cookbook Generator
 
+## Release 1.1.1 2015/04/30
+
+* Fix readme.
+
 ## Release 1.1.0 2015/04/28
 
 * Support for ChefDK 0.5.0.
