@@ -17,13 +17,14 @@ cookbook_directories.each do |dir|
 end
 
 # Create basic files
-files_basic = [
-  'chefignore',
-  'Berksfile',
-  'Gemfile',
-  'LICENSE',
-  'Thorfile'
-]
+files_basic = %w(
+  .rubocop.yml
+  Berksfile
+  chefignore
+  Gemfile
+  LICENSE
+  Thorfile
+)
 files_basic.each do |file|
   cookbook_file File.join(cookbook_dir, file) do
     action :create_if_missing
@@ -31,12 +32,12 @@ files_basic.each do |file|
 end
 
 # Create basic files from template
-files_template = [
-  'metadata.rb',
-  'README.md',
-  'CHANGELOG.md',
-  '.kitchen.yml'
-]
+files_template = %w(
+  metadata.rb
+  README.md
+  CHANGELOG.md
+  .kitchen.yml
+)
 files_template.each do |file|
   template File.join(cookbook_dir, file) do
     helpers(ChefDK::Generator::TemplateHelper)
