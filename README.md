@@ -95,7 +95,7 @@ Recipe: pan::cookbook
 
 * Create a cookbook named my_cookbook_name in the same subdirectory where pan resides, with the custom generator cookbook specified in your knife.rb.
 
-(Mac & Windows): `chef generate cookbook my_cookbook_name
+(Mac & Windows): `chef generate cookbook my_cookbook_name`
 
 * Create a cookbook named my_cookbook_name in the root of your primary drive with pan residing in your home directory
 
