@@ -18,7 +18,10 @@ or you want to be super fancy, add pan to your knife.rb for usage without the -g
 
 knife.rb stub:
 
-`chefdk.generator_cookbook '~/chef/pan'`
+`chefdk[:generator_cookbook] = '~/chef/pan' if defined? ChefDK::Configurable`
+
+Note that the `if defined? ChefDK::Configurable` part of this line is a workaround for a currently open bug on the ChefDK. See this issue for more details:
+https://github.com/chef/chef-dk/issues/375
 
 Then when you're ready to generate your cookbook:
 
