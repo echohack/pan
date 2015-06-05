@@ -35,6 +35,16 @@ end
 `chef generate cookbook my_cookbook_name`
 
 ```
+[ChefGen Flavor Selector]: Flavors on the menu
+1. pan_review: Review an existing cookbook and validate its correctness.
+2. pan_new: Generate a new cookbook with good defaults.
+3. pan_base: Generate a base cookbook for organization wide policy.
+[ChefGen Flavor Selector]: Enter selection:
+```
+
+`2`
+
+```
 echohack:desktop echohack$ chef generate cookbook my_cookbook_name
 Compiling Cookbooks...
 Recipe: new::cookbook
