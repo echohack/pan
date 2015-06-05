@@ -27,19 +27,3 @@ files_basic.each do |file|
     action :create
   end
 end
-
-# Fail if files match defaults
-require FileUtils
-files_change = %w(
-  metadata.rb
-  README.md
-  CHANGELOG.md
-  .kitchen.yml
-)
-files_change.each do |file|
-  template File.join(cookbook_dir, file) do
-    helpers(ChefDK::Generator::TemplateHelper)
-    verify !FileUtils.compare_file(File.join(cookbook_dir, file), File.join('..', 'templates', 'default', file))
-    action :create_if_missing
-  end
-end
