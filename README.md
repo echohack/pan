@@ -1,124 +1,120 @@
 # pan cookbook generator
 
-Pan is an example cookbook generator. Use this example to create your organization's own custom cookbook generator.
+Pan is a Chef cookbook generator using [chef-gen-flavors](https://rubygems.org/gems/chef-gen-flavors). You can use it out of the box as an opinionated way of creating new cookbooks, or modify it to meet your organization needs.
 
-## Supported Platforms
+## Install
 
-### Tested And Validated On
-* Mac OSX 10.10 with ChefDK 0.5.0
-* Windows 7 with ChefDK 0.5.0
+- To get started, you'll need to install chef-gen-flavors, a gem that allows you to have multiple types of generators.
+
+`chef gem install chef-gen-flavors`
+
+- Then you can install the pan flavor:
+
+`chef gem install chef-flavor-pan`
+
+- Now add this to your knife.rb:
+
+```
+# only load ChefGen::Flavors if we're being called from the ChefDK CLI
+if defined?(ChefDK::CLI)
+  require 'chef_gen/flavors'
+  chefdk.generator_cookbook = ChefGen::Flavors.path
+end
+```
+
+- You're done! Let's get cooking.
 
 ## Usage
 
-While in the directory you wish to create your cookbook:
-
-`chef generate cookbook my_cookbook_name -g ~/path/to/pan`
-
-or you want to be super fancy, add pan to your knife.rb for usage without the -g argument:
-
-knife.rb stub:
-
-`chefdk[:generator_cookbook] = '~/chef/pan' if defined? ChefDK::Configurable`
-
-Note that the `if defined? ChefDK::Configurable` part of this line is a workaround for a currently open bug on the ChefDK. See this issue for more details:
-https://github.com/chef/chef-dk/issues/375
-
-Then when you're ready to generate your cookbook:
-
-```chef generate cookbook my_cookbook3```
+`chef generate cookbook my_cookbook_name`
 
 ```
-Davids-MacBook-Pro:desktop echohack$ chef generate cookbook my_cookbook3
+echohack:desktop echohack$ chef generate cookbook my_cookbook_name
 Compiling Cookbooks...
-Recipe: pan::cookbook
-  * directory[/Users/echohack/Desktop/my_cookbook3/attributes] action create
-    - create new directory /Users/echohack/Desktop/my_cookbook3/attributes
-  * directory[/Users/echohack/Desktop/my_cookbook3/recipes] action create
-    - create new directory /Users/echohack/Desktop/my_cookbook3/recipes
-  * directory[/Users/echohack/Desktop/my_cookbook3/templates/default] action create
-    - create new directory /Users/echohack/Desktop/my_cookbook3/templates/default
-  * directory[/Users/echohack/Desktop/my_cookbook3/files/default] action create
-    - create new directory /Users/echohack/Desktop/my_cookbook3/files/default
-  * directory[/Users/echohack/Desktop/my_cookbook3/test/integration/default] action create
-    - create new directory /Users/echohack/Desktop/my_cookbook3/test/integration/default
-  * cookbook_file[/Users/echohack/Desktop/my_cookbook3/.rubocop.yml] action create_if_missing
-    - create new file /Users/echohack/Desktop/my_cookbook3/.rubocop.yml
-    - update content in file /Users/echohack/Desktop/my_cookbook3/.rubocop.yml from none to fb555e
+Recipe: new::cookbook
+  * directory[/Users/echohack/Desktop/my_cookbook_name/attributes] action create
+    - create new directory /Users/echohack/Desktop/my_cookbook_name/attributes
+  * directory[/Users/echohack/Desktop/my_cookbook_name/recipes] action create
+    - create new directory /Users/echohack/Desktop/my_cookbook_name/recipes
+  * directory[/Users/echohack/Desktop/my_cookbook_name/templates/default] action create
+    - create new directory /Users/echohack/Desktop/my_cookbook_name/templates/default
+  * directory[/Users/echohack/Desktop/my_cookbook_name/files/default] action create
+    - create new directory /Users/echohack/Desktop/my_cookbook_name/files/default
+  * directory[/Users/echohack/Desktop/my_cookbook_name/test/integration/default] action create
+    - create new directory /Users/echohack/Desktop/my_cookbook_name/test/integration/default
+  * cookbook_file[/Users/echohack/Desktop/my_cookbook_name/.rubocop.yml] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook_name/.rubocop.yml
+    - update content in file /Users/echohack/Desktop/my_cookbook_name/.rubocop.yml from none to fb555e
     (diff output suppressed by config)
-  * cookbook_file[/Users/echohack/Desktop/my_cookbook3/Berksfile] action create_if_missing
-    - create new file /Users/echohack/Desktop/my_cookbook3/Berksfile
-    - update content in file /Users/echohack/Desktop/my_cookbook3/Berksfile from none to 5ec92e
+  * cookbook_file[/Users/echohack/Desktop/my_cookbook_name/Berksfile] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook_name/Berksfile
+    - update content in file /Users/echohack/Desktop/my_cookbook_name/Berksfile from none to 5ec92e
     (diff output suppressed by config)
-  * cookbook_file[/Users/echohack/Desktop/my_cookbook3/chefignore] action create_if_missing
-    - create new file /Users/echohack/Desktop/my_cookbook3/chefignore
-    - update content in file /Users/echohack/Desktop/my_cookbook3/chefignore from none to 9727b1
+  * cookbook_file[/Users/echohack/Desktop/my_cookbook_name/chefignore] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook_name/chefignore
+    - update content in file /Users/echohack/Desktop/my_cookbook_name/chefignore from none to 9727b1
     (diff output suppressed by config)
-  * cookbook_file[/Users/echohack/Desktop/my_cookbook3/Gemfile] action create_if_missing
-    - create new file /Users/echohack/Desktop/my_cookbook3/Gemfile
-    - update content in file /Users/echohack/Desktop/my_cookbook3/Gemfile from none to a3b439
+  * cookbook_file[/Users/echohack/Desktop/my_cookbook_name/Gemfile] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook_name/Gemfile
+    - update content in file /Users/echohack/Desktop/my_cookbook_name/Gemfile from none to a3b439
     (diff output suppressed by config)
-  * cookbook_file[/Users/echohack/Desktop/my_cookbook3/LICENSE] action create_if_missing
-    - create new file /Users/echohack/Desktop/my_cookbook3/LICENSE
-    - update content in file /Users/echohack/Desktop/my_cookbook3/LICENSE from none to 693e85
+  * cookbook_file[/Users/echohack/Desktop/my_cookbook_name/LICENSE] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook_name/LICENSE
+    - update content in file /Users/echohack/Desktop/my_cookbook_name/LICENSE from none to 693e85
     (diff output suppressed by config)
-  * cookbook_file[/Users/echohack/Desktop/my_cookbook3/Thorfile] action create_if_missing
-    - create new file /Users/echohack/Desktop/my_cookbook3/Thorfile
-    - update content in file /Users/echohack/Desktop/my_cookbook3/Thorfile from none to bab8d2
+  * cookbook_file[/Users/echohack/Desktop/my_cookbook_name/Thorfile] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook_name/Thorfile
+    - update content in file /Users/echohack/Desktop/my_cookbook_name/Thorfile from none to bab8d2
     (diff output suppressed by config)
-  * template[/Users/echohack/Desktop/my_cookbook3/metadata.rb] action create_if_missing
-    - create new file /Users/echohack/Desktop/my_cookbook3/metadata.rb
-    - update content in file /Users/echohack/Desktop/my_cookbook3/metadata.rb from none to 95b0c0
+  * template[/Users/echohack/Desktop/my_cookbook_name/metadata.rb] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook_name/metadata.rb
+    - update content in file /Users/echohack/Desktop/my_cookbook_name/metadata.rb from none to 95b0c0
     (diff output suppressed by config)
-  * template[/Users/echohack/Desktop/my_cookbook3/README.md] action create_if_missing
-    - create new file /Users/echohack/Desktop/my_cookbook3/README.md
-    - update content in file /Users/echohack/Desktop/my_cookbook3/README.md from none to 5b81bf
+  * template[/Users/echohack/Desktop/my_cookbook_name/README.md] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook_name/README.md
+    - update content in file /Users/echohack/Desktop/my_cookbook_name/README.md from none to 5b81bf
     (diff output suppressed by config)
-  * template[/Users/echohack/Desktop/my_cookbook3/CHANGELOG.md] action create_if_missing
-    - create new file /Users/echohack/Desktop/my_cookbook3/CHANGELOG.md
-    - update content in file /Users/echohack/Desktop/my_cookbook3/CHANGELOG.md from none to 0404f5
+  * template[/Users/echohack/Desktop/my_cookbook_name/CHANGELOG.md] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook_name/CHANGELOG.md
+    - update content in file /Users/echohack/Desktop/my_cookbook_name/CHANGELOG.md from none to 0404f5
     (diff output suppressed by config)
-  * template[/Users/echohack/Desktop/my_cookbook3/.kitchen.yml] action create_if_missing
-    - create new file /Users/echohack/Desktop/my_cookbook3/.kitchen.yml
-    - update content in file /Users/echohack/Desktop/my_cookbook3/.kitchen.yml from none to 1338ed
+  * template[/Users/echohack/Desktop/my_cookbook_name/.kitchen.yml] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook_name/.kitchen.yml
+    - update content in file /Users/echohack/Desktop/my_cookbook_name/.kitchen.yml from none to 1338ed
     (diff output suppressed by config)
-  * template[/Users/echohack/Desktop/my_cookbook3/attributes/default.rb] action create_if_missing
-    - create new file /Users/echohack/Desktop/my_cookbook3/attributes/default.rb
-    - update content in file /Users/echohack/Desktop/my_cookbook3/attributes/default.rb from none to cdc111
+  * template[/Users/echohack/Desktop/my_cookbook_name/attributes/default.rb] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook_name/attributes/default.rb
+    - update content in file /Users/echohack/Desktop/my_cookbook_name/attributes/default.rb from none to cdc111
     (diff output suppressed by config)
-  * template[/Users/echohack/Desktop/my_cookbook3/recipes/default.rb] action create_if_missing
-    - create new file /Users/echohack/Desktop/my_cookbook3/recipes/default.rb
-    - update content in file /Users/echohack/Desktop/my_cookbook3/recipes/default.rb from none to e3b0c4
+  * template[/Users/echohack/Desktop/my_cookbook_name/recipes/default.rb] action create_if_missing
+    - create new file /Users/echohack/Desktop/my_cookbook_name/recipes/default.rb
+    - update content in file /Users/echohack/Desktop/my_cookbook_name/recipes/default.rb from none to e3b0c4
     (diff output suppressed by config)
 ```
+
 ## Examples
 
-* Create a cookbook named my_cookbook_name in the same subdirectory where pan resides, explicitly specifying the custom generator cookbook.
-
-(Mac & Windows): `chef generate cookbook my_cookbook_name -g ./pan`
-
-* Create a cookbook named my_cookbook_name in the same subdirectory where pan resides, with the custom generator cookbook specified in your knife.rb.
+* Create a cookbook named my_cookbook_name in the same subdirectory where pan resides.
 
 (Mac & Windows): `chef generate cookbook my_cookbook_name`
 
 * Create a cookbook named my_cookbook_name in the root of your primary drive with pan residing in your home directory
 
-(Mac): `chef generate cookbook /mycookbook -g ~/pan`
+(Mac): `chef generate cookbook /mycookbook`
 
-(Windows): `chef generate cookbook C:\mycookbook -g %USERPROFILE%\pan`
+(Windows): `chef generate cookbook C:\mycookbook`
+
+## Supported Platforms
+
+### Tested And Validated On
+* Mac OSX 10.10 with ChefDK 0.6.0
+* Windows 7 with ChefDK 0.6.0
+
+ChefDK 0.3.6 and higher all likely work, but previous versions were not tested and validated.
 
 ## Stuff This Custom Generator Does
 
-Things you might not be familiar with that this generator creates:
-
-### In metadata.md
-
-1. IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-
-  * A hack to force Chef Manage to display the contents of the README.md.
-
-2. Text isn't aligned
-
-  * This blows up rubocop, and I'd rather have it more standardized. Just say no to vertical whitespace. ;)
+Take a look at the flavors and generate a few cookbooks to see what they do. But I'll mention some best practices here:
 
 ### In default_attributes.rb
 
@@ -135,9 +131,3 @@ Things you might not be familiar with that this generator creates:
 
 2. Windows 2012 R2 with automagical WinRM transport
   * Ideally this is how you would set up the transport for WinRM with Kitchen. This is a new feature as of Test Kitchen 1.4.0 / ChefDK 0.5.0.
-
-### In cookbook.rb
-
-* I think it's better to create the items in the cookbook by using data driven patterns, so if you add something new it's fairly simple. The patterns speak for themselves. Perhaps there's a better way still.
-
-* Using the :create_if_missing action is stronger here because you can use it to stub out already existing cookbooks without blowing up existing work. Because we use :create_if_missing you can use this as a code review tool as well.

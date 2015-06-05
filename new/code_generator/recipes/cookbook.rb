@@ -18,7 +18,6 @@ end
 
 # Create basic files
 files_basic = %w(
-  .rubocop.yml
   Berksfile
   chefignore
   Gemfile
