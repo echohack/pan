@@ -8,7 +8,7 @@ module ChefGen
       VERSION = '1.0.0'
       class << self
         def description
-          'Base cookbook for organization wide policy.'
+          'Generate a base cookbook for organization wide policy.'
         end
 
         def code_generator_path(classfile)

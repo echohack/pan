@@ -8,7 +8,7 @@ module ChefGen
       VERSION = '1.0.0'
       class << self
         def description
-          'New cookbook with basic defaults.'
+          'Generate a new cookbook with good defaults.'
         end
 
         def code_generator_path(classfile)

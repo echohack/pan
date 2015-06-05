@@ -8,7 +8,7 @@ module ChefGen
       VERSION = '1.0.0'
       class << self
         def description
-          'Use over an existing cookbook to review, or use during the cookbook build.'
+          'Review an existing cookbook and validate its correctness.'
         end
 
         def code_generator_path(classfile)

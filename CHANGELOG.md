@@ -1,5 +1,9 @@
 # Pan Example Cookbook Generator
 
+## Release 2.0.0 2015/06/03
+
+* Massive overhaul. Now uses [chef-gen-flavors](https://rubygems.org/gems/chef-gen-flavors) and provides several different flavors of cookbook generators for you to consume.
+
 ## Release 1.1.1 2015/04/30
 
 * Fix readme.
