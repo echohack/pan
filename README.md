@@ -2,6 +2,12 @@
 
 Pan is a Chef cookbook generator using [chef-gen-flavors](https://rubygems.org/gems/chef-gen-flavors). You can use it out of the box as an opinionated way of creating new cookbooks, or modify it to meet your organization needs.
 
+Features:
+- Don't create boilerplate files for cookbooks ever again! Let the cookbook generator do it for you.
+- Drive organizational policy by setting standards and good defaults for what a cookbook should look like!
+- Review existing cookbooks during code reviews or during your cookbook build.
+- Automatically generate examples for developers brand new to Chef.
+
 ## Install
 
 - To get started, you'll need to install chef-gen-flavors, a gem that allows you to have multiple types of generators.
