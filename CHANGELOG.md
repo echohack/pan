@@ -1,5 +1,9 @@
 # Pan Example Cookbook Generator
 
+## Release 3.0.1 2015/09/22
+
+* Small update to take a dependency on chef-gen-flavors
+
 ## Release 3.0.0 2015/09/22
 
 * Large refactor for chef-gen-flavors 0.9.1+. Note that this release of pan will now only work on chef-gen-flavors 0.9.1+.

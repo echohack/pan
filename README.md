@@ -13,11 +13,9 @@ Pan is a Chef cookbook generator using [chef-gen-flavors](https://rubygems.org/g
 
 ## Install
 
-- To get started, you'll need to install chef-gen-flavors, a gem that allows you to have multiple types of generators.
+- Make sure you have ChefDK installed: https://downloads.chef.io/chef-dk/
 
-`chef gem install chef-gen-flavors`
-
-- Then you can install the pan flavor:
+- Then run this command:
 
 `chef gem install chef-flavor-pan`
 
