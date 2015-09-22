@@ -3,19 +3,17 @@ require 'chef_gen/snippets'
 
 module ChefGen
   module Flavor
-    class PanReview < FlavorBase
-      include ChefGen::Snippet::StyleRubocop
+    class PanReview < ChefGen::FlavorBase
+      NAME = 'pan_review'
+      DESC = 'Review an existing cookbook and validate its correctness.'
       VERSION = '1.0.0'
-      class << self
-        def description
-          'Review an existing cookbook and validate its correctness.'
-        end
 
-        def code_generator_path(classfile)
-          File.expand_path(
-            File.join(classfile, '..', '..', '..', '..', 'review', 'code_generator')
-          )
-        end
+      def initialize(temp_path: nil, type: nil, recipe: nil)
+        super
+      end
+
+      do_add_content do
+        @tocopy << [File.expand_path(File.join(static_content_path(__FILE__, 'review'))) + '/.']
       end
     end
   end
