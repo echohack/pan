@@ -117,12 +117,6 @@ Recipe: new::cookbook
 
 (Mac & Windows): `chef generate cookbook my_cookbook_name`
 
-* Create a cookbook named my_cookbook_name in the root of your primary drive with pan residing in your home directory
-
-(Mac): `chef generate cookbook /mycookbook`
-
-(Windows): `chef generate cookbook C:\mycookbook`
-
 ## Supported Platforms
 
 ### Tested And Validated On
