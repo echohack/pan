@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name = 'chef-flavor-pan'
-  s.version = '2.0.0'
+  s.version = '3.0.0'
 
   s.add_runtime_dependency('chef-gen-flavor-base', ['~> 0.9'])
 

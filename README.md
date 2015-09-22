@@ -126,8 +126,8 @@ Recipe: new::cookbook
 ## Supported Platforms
 
 ### Tested And Validated On
-* Mac OSX 10.10 with ChefDK 0.6.0
-* Windows 7 with ChefDK 0.6.0
+* Mac OSX 10.10 with ChefDK 0.7.0 and chef-gen-flavors 0.9.1
+* Windows 7 with ChefDK 0.7.0 and chef-gen-flavors 0.9.1
 
 ChefDK 0.3.6 and higher all likely work, but previous versions were not tested and validated.
 
