@@ -1,5 +1,12 @@
 # Pan Example Cookbook Generator
 
+## Release 4.0.0 2015/10/29
+
+* Added a dsc_script example flavor.
+* Removed chef-gen-flavor-base as a dependency. I believe the features in chef-gen-flavor-base are unnecessary. This also removes a potential breaking change in pan for ChefDK 0.9.0.
+* Added a simple helper module for less code duplication in flavors.
+* Some small renames should make it easier for newer Chef developers to consume flavors or construct their own flavors by following this example.
+
 ## Release 3.0.1 2015/09/22
 
 * Small update to take a dependency on chef-gen-flavors

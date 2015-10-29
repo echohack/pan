@@ -23,9 +23,13 @@ files_basic = %w(
   Gemfile
   LICENSE
   Thorfile
+  recipes/_chef_client.rb
+  recipes/_defaults_linux.rb
+  recipes/_defaults_windows.rb
 )
 files_basic.each do |file|
   cookbook_file File.join(cookbook_dir, file) do
+    source file
     action :create_if_missing
   end
 end
@@ -43,6 +47,8 @@ files_template.each do |file|
     action :create_if_missing
   end
 end
+
+
 
 # Create more complex files from templates
 template "#{cookbook_dir}/attributes/default.rb" do

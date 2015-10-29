@@ -2,11 +2,11 @@ require 'chef_gen/helpers/copy_helpers'
 
 module ChefGen
   module Flavor
-    class PanNew
+    class PanDscScript
       include ChefGen::CopyHelpers
 
-      NAME = 'pan_new'
-      DESC = 'Generate a new cookbook with good defaults.'
+      NAME = 'pan_dsc_script'
+      DESC = 'Generate an example cookbook that uses dsc_script.'
       VERSION = '1.0.0'
 
       def initialize(temp_path:)

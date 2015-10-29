@@ -1,11 +1,8 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name = 'chef-flavor-pan'
-  s.version = '3.0.1'
-
+  s.version = '4.0.0'
   s.add_runtime_dependency('chef-gen-flavors', ['~> 0.9'])
-  s.add_runtime_dependency('chef-gen-flavor-base', ['~> 0.9'])
-
   s.required_rubygems_version = Gem::Requirement.new('>= 0') if s.respond_to? :required_rubygems_version=
   s.require_paths = ['lib']
   s.authors = ['David Echols']
@@ -17,6 +14,5 @@ Gem::Specification.new do |s|
   s.rdoc_options = ['--main', 'README.md']
   s.rubygems_version = '2.4.4'
   s.summary = 'A Chef automatic cookbook generator using [chef-gen-flavors](https://rubygems.org/gems/chef-gen-flavors)'
-
   s.specification_version = 4 if s.respond_to? :specification_version
 end

@@ -1,19 +1,20 @@
-require 'chef_gen/flavor_base'
-require 'chef_gen/snippets'
+require 'chef_gen/helpers/copy_helpers'
 
 module ChefGen
   module Flavor
-    class PanBase < ChefGen::FlavorBase
+    class PanBase
+      include ChefGen::CopyHelpers
+
       NAME = 'pan_base'
       DESC = 'Generate a base cookbook for organization wide policy.'
       VERSION = '1.0.0'
 
-      def initialize(temp_path: nil, type: nil, recipe: nil)
-        super
+      def initialize(temp_path:)
+        @temp_path = temp_path
       end
 
-      do_add_content do
-        @tocopy << [File.expand_path(File.join(static_content_path(__FILE__, 'base'))) + '/.']
+      def add_content
+        copy_content(NAME)
       end
     end
   end

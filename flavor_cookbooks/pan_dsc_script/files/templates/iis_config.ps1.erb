@@ -1,0 +1,70 @@
+configuration iis_config
+{
+  Import-DscResource -Module xWebAdministration
+
+  xWebsite DefaultWebSite
+  {
+    Name = "<%= @site_name %>"
+    PhysicalPath = "<%= @site_path %>"
+    State = "Started"
+    Ensure = "Present"
+  }
+
+  xWebAppPool app
+  {
+    Name = "app"
+    State = "Started"
+    Ensure = "Present"
+  }
+
+  Script AppPoolIdentity
+  {
+    TestScript = {
+      Import-Module WebAdministration
+      return (Get-Item IIS:\AppPools\app).processModel.username -eq "<%= @pool_user %>"
+    }
+
+    SetScript = {
+      Import-Module WebAdministration
+      $pool = get-item IIS:\AppPools\app
+      $pool.processModel.username = "<%= @pool_user %>"
+      $pool.processModel.password = "<%= @pool_password %>"
+      $pool.processModel.identityType = 3
+      $pool | set-item
+    }
+
+    GetScript = {
+      Import-Module WebAdministration
+      $pool = Get-Item IIS:\AppPools\app
+      return @{
+        ProcessModel = $pool.processModel
+      }
+    }
+  }
+
+  xWebApplication webapp1
+  {
+    Name = "webapp1"
+    Website = "<%= @site_name %>"
+    WebAppPool = "app"
+    PhysicalPath = "<%= @webapp1_path %>"
+    Ensure = "Present"
+  }
+
+  xWebApplication webapp2
+  {
+    Name = "webapp2"
+    Website = "<%= @site_name %>"
+    WebAppPool = "app"
+    PhysicalPath = "<%= @webapp2_path %>"
+    Ensure = "Present"
+  }
+
+  xWebApplication webapp3
+  {
+    Name = "webapp3"
+    Website = "<%= @site_name %>"
+    WebAppPool = "app"
+    PhysicalPath = "<%= @webapp3_path %>"
+    Ensure = "Present"
+  }
